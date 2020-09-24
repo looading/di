@@ -17,7 +17,6 @@ function isPropertyDecorator(arg: any[]): arg is Parameters<PropertyDecorator> {
  */
 export const inject = <T extends ClassType<any>>(token: Token<T>): PropertyDecorator => {
   return (...arg: any[]) => {
-    console.log(2)
     if(isPropertyDecorator(arg)) {
 
       const [ target, propertykey ] = arg
@@ -44,7 +43,6 @@ export const inject = <T extends ClassType<any>>(token: Token<T>): PropertyDecor
  */
 export const injectable = () => {
   return (target: ClassType<any>): ClassType<any> => {
-    console.log('1')
     class WrapperClass extends target {
       constructor(...arg) {
         super(...arg)

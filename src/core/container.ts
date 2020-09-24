@@ -7,7 +7,7 @@ export class Container {
   static readonly metadata = new Map<ClassType<any>, Map<string | symbol, Token<any>>>()
   static readonly event$ = new BehaviorEvent()
 
-  static bindDeps<T extends ClassType<any, any>>(token: Token<T>, Target: T) {
+  static bindCrate<T extends ClassType<any, any>>(token: Token<T>, Target: T) {
     Container.deps.set(token, Target)
     return this
   }
@@ -17,7 +17,7 @@ export class Container {
       return Container.instances.get(token)
     }
     if(!Container.deps.has(token)) {
-      throw new Error(`未找到该依赖: ${token.key}`)
+      throw new Error(`Dependence not Found: ${token.key}`)
     }
 
     const TargetClass = Container.deps.get(token)

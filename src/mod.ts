@@ -1,4 +1,5 @@
 
+import { Container } from './core/container'
 import { inject, injectable, Token } from './core/di'
 
 const MainToken = new Token<ClassType<Main, any>>('main')
@@ -26,6 +27,10 @@ class Main {
     log()
   }
 }
+
+Container
+  .bindCrate(TestToken, Test)
+  .bindCrate(MainToken, Main)
 
 const main = new Main()
 
